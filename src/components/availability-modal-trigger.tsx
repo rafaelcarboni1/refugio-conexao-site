@@ -45,14 +45,19 @@ export default function AvailabilityModalTrigger({
           className="fixed inset-0 z-[110] flex items-center justify-center bg-black/65 p-4 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
+          onClick={() => setOpen(false)}
         >
-          <div className="relative max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-white/20 bg-[var(--background)] p-3 shadow-2xl md:p-4">
+          <div
+            className="relative max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-white/20 bg-[var(--background)] p-3 shadow-2xl md:p-4"
+            onClick={(event) => event.stopPropagation()}
+          >
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="absolute top-3 right-3 rounded-full border border-[var(--border)] bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--secondary)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
+              aria-label="Fechar"
+              className="absolute top-3 left-3 h-8 w-8 rounded-full border border-[var(--border)] bg-white text-base font-semibold leading-none text-[var(--secondary)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
             >
-              Fechar
+              ×
             </button>
 
             <BookingPrecheck
