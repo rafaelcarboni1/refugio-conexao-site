@@ -14,7 +14,7 @@ const domos = [
       "Cozinha completa equipada",
       "Wi-Fi de alta velocidade",
     ],
-    image: "https://refugioconexao.com/wp-content/uploads/2024/04/one-1.webp",
+    image: "/images/domo-one/domo-one-001-6e86bfce18.jpg",
   },
   {
     id: "two",
@@ -28,7 +28,7 @@ const domos = [
       "Deck para relaxamento",
       "Estacionamento privativo",
     ],
-    image: "https://refugioconexao.com/wp-content/uploads/2024/04/two-1.webp",
+    image: "/images/domo-two/domo-two-001-cf6a1ba3ca.jpg",
   },
   {
     id: "three",
@@ -42,7 +42,7 @@ const domos = [
       "Espaço de lazer com churrasqueira",
       "Hidromassagem privativa",
     ],
-    image: "https://refugioconexao.com/wp-content/uploads/2024/04/refugio1-e1714435670322.jpg",
+    image: "/images/domo-three/domo-three-001-bda8973b5f.jpg",
   },
 ];
 
@@ -136,18 +136,18 @@ export default function Home() {
 
             <div className="grid gap-3 sm:grid-cols-2">
               <img
-                src="https://refugioconexao.com/wp-content/uploads/2024/04/one-2.webp"
-                alt="Domo com vista para natureza"
+                src="/images/domo-one/domo-one-002-4390d682f6.jpg"
+                alt="Domo One"
                 className="h-44 w-full rounded-2xl object-cover sm:h-full"
               />
               <img
-                src="https://refugioconexao.com/wp-content/uploads/2024/04/two-2.webp"
-                alt="Interior de domo"
+                src="/images/domo-two/domo-two-002-b15c1373e9.jpg"
+                alt="Domo Two"
                 className="h-44 w-full rounded-2xl object-cover sm:h-full"
               />
               <img
-                src="https://refugioconexao.com/wp-content/uploads/2024/04/rodrigo1.webp"
-                alt="Cânions e paisagem"
+                src="/images/domo-three/domo-three-002-c3d5967e6f.jpg"
+                alt="Domo Three"
                 className="h-44 w-full rounded-2xl object-cover sm:col-span-2"
               />
             </div>
@@ -221,7 +221,7 @@ export default function Home() {
           </div>
 
           <img
-            src="https://refugioconexao.com/wp-content/uploads/2024/04/refugio.webp"
+            src="/images/domo-three/domo-three-003-6e380f5b1f.jpg"
             alt="Paisagem do Refúgio Conexão"
             className="h-full min-h-[320px] w-full rounded-3xl object-cover"
           />
