@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fafaf9;
+  --surface: #ffffff;
+  --foreground: #0c0a09;
+  --muted: #57534e;
+  --primary: #1c1917;
+  --secondary: #44403c;
+  --accent: #a16207;
+  --border: #d6d3d1;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+  --font-sans: var(--font-body);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display), serif;
+}
+
+.section-shell {
+  @apply mx-auto w-full max-w-6xl px-4 md:px-8;
+}
+
+.card-glass {
+  @apply rounded-2xl border border-[var(--border)] bg-white/90 shadow-sm backdrop-blur;
+}
+
+.primary-btn {
+  @apply inline-flex items-center justify-center rounded-full bg-[var(--primary)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--accent)];
+}
+
+.secondary-btn {
+  @apply inline-flex items-center justify-center rounded-full border border-[var(--primary)] px-6 py-3 text-sm font-semibold text-[var(--primary)] transition hover:bg-[var(--primary)] hover:text-white;
+}
