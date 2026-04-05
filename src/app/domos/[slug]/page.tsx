@@ -82,6 +82,44 @@ export default async function DomoPage({
       </section>
 
       <section className="section-shell py-16">
+        <div className="mb-8 flex items-end justify-between gap-4">
+          <div>
+            <p className="text-xs tracking-[0.18em] uppercase text-[var(--accent)]">Galeria completa</p>
+            <h2 className="mt-2 text-5xl">{domo.gallery.length} fotos do {domo.name}</h2>
+          </div>
+          <a
+            href={wa(`Olá! Quero mais informações e disponibilidade para o ${domo.name}.`)}
+            target="_blank"
+            rel="noreferrer"
+            className="secondary-btn"
+          >
+            Falar com atendimento
+          </a>
+        </div>
+
+        <div className="relative">
+          <div className="mb-3 flex items-center justify-between text-xs uppercase tracking-[0.15em] text-[var(--secondary)]">
+            <span>Deslize para o lado</span>
+            <span>{domo.gallery.length} fotos</span>
+          </div>
+
+          <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [scrollbar-width:thin]">
+            {domo.gallery.map((img, index) => (
+              <figure
+                key={img}
+                className="min-w-[82vw] snap-start overflow-hidden rounded-2xl border border-[var(--border)] bg-white shadow-sm sm:min-w-[66vw] lg:min-w-[520px]"
+              >
+                <img src={img} alt={`Foto ${index + 1} do ${domo.name}`} className="h-[320px] w-full object-cover md:h-[420px]" />
+                <figcaption className="px-3 py-2 text-xs text-[var(--secondary)]">
+                  {domo.name} • Foto {index + 1}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell py-16">
         <div className="card-glass p-6 md:p-10">
           <p className="text-xs tracking-[0.18em] uppercase text-[var(--accent)]">Descrição completa</p>
           <h2 className="mt-2 text-5xl">Conheça melhor o {domo.name}</h2>
@@ -155,44 +193,6 @@ export default async function DomoPage({
             >
               Ver política completa
             </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-shell pb-20">
-        <div className="mb-8 flex items-end justify-between gap-4">
-          <div>
-            <p className="text-xs tracking-[0.18em] uppercase text-[var(--accent)]">Galeria completa</p>
-            <h2 className="mt-2 text-5xl">{domo.gallery.length} fotos do {domo.name}</h2>
-          </div>
-          <a
-            href={wa(`Olá! Quero mais informações e disponibilidade para o ${domo.name}.`)}
-            target="_blank"
-            rel="noreferrer"
-            className="secondary-btn"
-          >
-            Falar com atendimento
-          </a>
-        </div>
-
-        <div className="relative">
-          <div className="mb-3 flex items-center justify-between text-xs uppercase tracking-[0.15em] text-[var(--secondary)]">
-            <span>Deslize para o lado</span>
-            <span>{domo.gallery.length} fotos</span>
-          </div>
-
-          <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [scrollbar-width:thin]">
-            {domo.gallery.map((img, index) => (
-              <figure
-                key={img}
-                className="min-w-[82vw] snap-start overflow-hidden rounded-2xl border border-[var(--border)] bg-white shadow-sm sm:min-w-[66vw] lg:min-w-[520px]"
-              >
-                <img src={img} alt={`Foto ${index + 1} do ${domo.name}`} className="h-[320px] w-full object-cover md:h-[420px]" />
-                <figcaption className="px-3 py-2 text-xs text-[var(--secondary)]">
-                  {domo.name} • Foto {index + 1}
-                </figcaption>
-              </figure>
-            ))}
           </div>
         </div>
       </section>
