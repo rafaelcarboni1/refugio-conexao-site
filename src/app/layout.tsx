@@ -72,8 +72,8 @@ export const metadata: Metadata = {
   other: {
     "geo.region": "BR-SC",
     "geo.placename": "Praia Grande",
-    "geo.position": "-29.1943;-49.9536",
-    ICBM: "-29.1943, -49.9536",
+    "geo.position": "-29.177342;-49.83678795",
+    ICBM: "-29.177342, -49.83678795",
   },
 };
 

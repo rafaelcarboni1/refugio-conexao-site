@@ -94,8 +94,8 @@ export default function HomePage() {
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: -29.1943,
-      longitude: -49.9536,
+      latitude: -29.177342,
+      longitude: -49.83678795,
     },
     areaServed: "Praia Grande, SC",
   };
@@ -415,7 +415,7 @@ export default function HomePage() {
               <li>• Suporte no WhatsApp para roteiro e orientações de chegada</li>
             </ul>
             <a
-              href="https://maps.google.com/?q=Praia+Grande+SC"
+              href="https://maps.app.goo.gl/wXMRsjFNYJpCyjAD9"
               target="_blank"
               rel="noreferrer"
               className="secondary-btn mt-6"
