@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 
 const whatsappNumber = "554891971032";
 
@@ -37,6 +38,15 @@ const cancelamentos = [
   "Lembramos que nossas diárias sofrem reajustes periodicamente e o valor da nova reserva poderá ser diferente ao valor da reserva atual.",
   "Qualquer dúvida estamos à disposição.",
 ];
+
+export const metadata: Metadata = {
+  title: "Políticas de Reserva | Refúgio Conexão",
+  description:
+    "Confira as informações importantes, regras de hospedagem, cancelamentos e transferências do Refúgio Conexão em Praia Grande-SC.",
+  alternates: {
+    canonical: "/politicas-de-reserva",
+  },
+};
 
 export default function PoliticasDeReservaPage() {
   return (

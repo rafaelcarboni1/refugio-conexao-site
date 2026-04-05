@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { domos } from "@/lib/domos";
 import DomoGallery from "@/components/domo-gallery";
 
@@ -10,6 +11,41 @@ const wa = (message: string) =>
 
 export function generateStaticParams() {
   return domos.map((domo) => ({ slug: domo.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const domo = domos.find((item) => item.slug === slug);
+
+  if (!domo) {
+    return {
+      title: "Domo | Refúgio Conexão",
+    };
+  }
+
+  return {
+    title: `${domo.name} | Refúgio Conexão`,
+    description: `${domo.fullDescription} Reserve no WhatsApp e viva uma experiência premium em Praia Grande-SC.`,
+    alternates: {
+      canonical: `/domos/${domo.slug}`,
+    },
+    openGraph: {
+      title: `${domo.name} | Refúgio Conexão`,
+      description: domo.description,
+      url: `https://refugio-conexao-site.vercel.app/domos/${domo.slug}`,
+      images: [
+        {
+          url: domo.hero,
+          alt: `${domo.name} - Refúgio Conexão`,
+        },
+      ],
+      type: "article",
+    },
+  };
 }
 
 export default async function DomoPage({

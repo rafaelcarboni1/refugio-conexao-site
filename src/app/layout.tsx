@@ -15,14 +15,65 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://refugio-conexao-site.vercel.app"),
   title: "Refúgio Conexão | Domos em Praia Grande-SC",
   description:
     "Hospedagem premium em domos geodésicos em Praia Grande-SC. Viva uma experiência exclusiva com vista para os cânions e reserva rápida pelo WhatsApp.",
+  keywords: [
+    "domos em Praia Grande",
+    "pousada em Praia Grande SC",
+    "hospedagem nos cânions",
+    "domo geodésico",
+    "refúgio conexão",
+    "capital dos cânions",
+  ],
+  alternates: {
+    canonical: "/",
+    languages: {
+      "pt-BR": "/",
+    },
+  },
+  category: "travel",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     title: "Refúgio Conexão | Domos em Praia Grande-SC",
     description:
       "3 domos exclusivos, conforto premium e experiências inesquecíveis na Capital dos Canyons.",
+    url: "https://refugio-conexao-site.vercel.app",
+    siteName: "Refúgio Conexão",
+    locale: "pt_BR",
     type: "website",
+    images: [
+      {
+        url: "/images/domo-three/domo-three-001-bda8973b5f.webp",
+        width: 1200,
+        height: 630,
+        alt: "Refúgio Conexão em Praia Grande-SC",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Refúgio Conexão | Domos em Praia Grande-SC",
+    description:
+      "Hospedagem premium em domos geodésicos na Capital dos Cânions, com reserva direta no WhatsApp.",
+    images: ["/images/domo-three/domo-three-001-bda8973b5f.webp"],
+  },
+  other: {
+    "geo.region": "BR-SC",
+    "geo.placename": "Praia Grande",
+    "geo.position": "-29.1943;-49.9536",
+    ICBM: "-29.1943, -49.9536",
   },
 };
 

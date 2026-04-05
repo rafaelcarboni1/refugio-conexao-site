@@ -72,15 +72,48 @@ const guestSignals = [
 ];
 
 export default function HomePage() {
+  const localBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    name: "Refúgio Conexão",
+    description:
+      "Hospedagem premium em domos geodésicos em Praia Grande-SC, com reserva direta via WhatsApp.",
+    url: "https://refugio-conexao-site.vercel.app",
+    telephone: "+55-48-99197-1032",
+    image: [
+      "https://refugio-conexao-site.vercel.app/images/domo-three/domo-three-001-bda8973b5f.webp",
+      "https://refugio-conexao-site.vercel.app/images/domo-one/domo-one-004-0b61e4d483.webp",
+    ],
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Estrada Geral, Costão Novo",
+      addressLocality: "Praia Grande",
+      addressRegion: "SC",
+      postalCode: "88990-000",
+      addressCountry: "BR",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: -29.1943,
+      longitude: -49.9536,
+    },
+    areaServed: "Praia Grande, SC",
+  };
+
   return (
     <div className="relative overflow-x-hidden bg-[var(--background)] text-[var(--foreground)]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+      />
+
       <div className="pointer-events-none absolute inset-0 opacity-40 [background:radial-gradient(circle_at_15%_10%,rgba(242,201,135,.35),transparent_35%),radial-gradient(circle_at_85%_15%,rgba(28,25,23,.12),transparent_30%)]" />
 
       <header className="fixed inset-x-0 top-0 z-50">
         <div className="mx-auto mt-4 flex w-[min(1200px,94%)] items-center justify-between rounded-full border border-white/25 bg-black/35 px-4 py-2 backdrop-blur-xl">
           <a href="#top" className="flex items-center gap-3">
             <img
-              src="/logo-refugio.jpg"
+              src="/logo-refugio.webp"
               alt="Refúgio Conexão"
               className="h-10 w-10 rounded-full border border-white/35 object-cover"
             />
@@ -124,7 +157,7 @@ export default function HomePage() {
 
       <section id="top" className="relative min-h-[98vh] overflow-hidden">
         <img
-          src="/images/domo-three/domo-three-001-bda8973b5f.jpg"
+          src="/images/domo-three/domo-three-001-bda8973b5f.webp"
           alt="Refúgio Conexão"
           className="absolute inset-0 h-full w-full object-cover"
         />
@@ -431,7 +464,7 @@ export default function HomePage() {
 
       <section id="contato" className="relative mt-8 overflow-hidden bg-[var(--primary)] py-20 text-white">
         <img
-          src="/images/domo-three/domo-three-020-82e57a2a2b.jpg"
+          src="/images/domo-three/domo-three-020-82e57a2a2b.webp"
           alt="Refúgio Conexão noite"
           className="absolute inset-0 h-full w-full object-cover opacity-30"
         />
