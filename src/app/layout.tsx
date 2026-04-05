@@ -16,6 +16,7 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://refugio-conexao-site.vercel.app"),
+  applicationName: "Refúgio Conexão",
   title: "Refúgio Conexão | Domos em Praia Grande-SC",
   description:
     "Hospedagem premium em domos geodésicos em Praia Grande-SC. Viva uma experiência exclusiva com vista para os cânions e reserva rápida pelo WhatsApp.",
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/domo-three/domo-three-001-bda8973b5f.webp",
+        url: "/og-refugio.jpg",
         width: 1200,
         height: 630,
         alt: "Refúgio Conexão em Praia Grande-SC",
@@ -67,7 +68,15 @@ export const metadata: Metadata = {
     title: "Refúgio Conexão | Domos em Praia Grande-SC",
     description:
       "Hospedagem premium em domos geodésicos na Capital dos Cânions, com reserva direta no WhatsApp.",
-    images: ["/images/domo-three/domo-three-001-bda8973b5f.webp"],
+    images: ["/og-refugio.jpg"],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.png", type: "image/png", sizes: "64x64" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: ["/favicon.png"],
   },
   other: {
     "geo.region": "BR-SC",
