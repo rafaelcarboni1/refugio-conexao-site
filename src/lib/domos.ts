@@ -7,6 +7,8 @@ export type Domo = {
   fullDescription: string;
   idealFor: string[];
   structure: string[];
+  includes: string[];
+  hostingRules: string[];
   hero: string;
   cover: string;
   highlights: string[];
@@ -32,6 +34,19 @@ export const domos: Domo[] = [
       "Banheiro privativo",
       "Roupas de cama e banho",
       "Ambiente climatizado"
+    ],
+    "includes": [
+      "Hidromassagem privativa",
+      "Cozinha equipada com itens básicos",
+      "Roupas de cama e banho",
+      "Wi‑Fi e Smart TV",
+      "Estacionamento no local"
+    ],
+    "hostingRules": [
+      "Check-in a partir das 16h",
+      "Check-out até 13h",
+      "Ambiente pensado para descanso e privacidade",
+      "Reserva confirmada após validação no WhatsApp"
     ],
     "hero": "/images/domo-one/domo-one-004-0b61e4d483.jpg",
     "cover": "/images/domo-one/domo-one-009-5dc7bec96b.jpg",
@@ -123,6 +138,19 @@ export const domos: Domo[] = [
       "Espaço externo para relaxar",
       "Ambiente climatizado"
     ],
+    "includes": [
+      "Hidromassagem privativa",
+      "Deck exclusivo para relaxamento",
+      "Smart TV 4K com streaming",
+      "Roupas de cama e banho",
+      "Estacionamento privativo"
+    ],
+    "hostingRules": [
+      "Check-in a partir das 16h",
+      "Check-out até 13h",
+      "Experiência ideal para casal",
+      "Reserva e atendimento direto no WhatsApp"
+    ],
     "hero": "/images/domo-two/domo-two-004-8e55cb7ab8.jpg",
     "cover": "/images/domo-two/domo-two-009-3b0d187e4b.jpg",
     "highlights": [
@@ -166,6 +194,19 @@ export const domos: Domo[] = [
       "Banheiro amplo com chuveiro duplo",
       "Área externa com churrasqueira",
       "Espaço de convivência maior"
+    ],
+    "includes": [
+      "Piscina aquecida com borda infinita",
+      "Hidromassagem privativa",
+      "Área de churrasqueira",
+      "Cozinha completa equipada",
+      "Estacionamento no local"
+    ],
+    "hostingRules": [
+      "Check-in a partir das 16h",
+      "Check-out até 13h",
+      "Capacidade máxima de até 4 hóspedes",
+      "Experiências extras sob agendamento prévio"
     ],
     "hero": "/images/domo-three/domo-three-006-9908b06de9.jpg",
     "cover": "/images/domo-three/domo-three-011-3d490d4c07.jpg",

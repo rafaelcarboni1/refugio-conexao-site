@@ -124,6 +124,34 @@ export default async function DomoPage({
         </div>
       </section>
 
+      <section className="section-shell pb-12">
+        <div className="grid gap-6 md:grid-cols-2">
+          <div className="rounded-3xl border border-[var(--border)] bg-white p-6 shadow-sm md:p-8">
+            <p className="text-xs tracking-[0.18em] uppercase text-[var(--accent)]">O que está incluso</p>
+            <h3 className="mt-2 text-4xl">Tudo pronto para sua estadia</h3>
+            <ul className="mt-5 space-y-2 text-sm text-[var(--secondary)]">
+              {domo.includes.map((item) => (
+                <li key={item} className="rounded-xl border border-[var(--border)] bg-[var(--background)] px-3 py-2">
+                  • {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="rounded-3xl border border-[var(--border)] bg-[#1d1b19] p-6 text-white shadow-sm md:p-8">
+            <p className="text-xs tracking-[0.18em] uppercase text-[#f2c987]">Regras da hospedagem</p>
+            <h3 className="mt-2 text-4xl">Informações importantes</h3>
+            <ul className="mt-5 space-y-2 text-sm text-white/85">
+              {domo.hostingRules.map((item) => (
+                <li key={item} className="rounded-xl border border-white/15 bg-white/5 px-3 py-2">
+                  • {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section className="section-shell pb-20">
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
