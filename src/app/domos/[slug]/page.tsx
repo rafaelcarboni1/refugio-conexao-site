@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { domos } from "@/lib/domos";
+import DomoGallery from "@/components/domo-gallery";
 
 const whatsappNumber = "554891971032";
 
@@ -97,26 +98,7 @@ export default async function DomoPage({
           </a>
         </div>
 
-        <div className="relative">
-          <div className="mb-3 flex items-center justify-between text-xs uppercase tracking-[0.15em] text-[var(--secondary)]">
-            <span>Deslize para o lado</span>
-            <span>{domo.gallery.length} fotos</span>
-          </div>
-
-          <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [scrollbar-width:thin]">
-            {domo.gallery.map((img, index) => (
-              <figure
-                key={img}
-                className="min-w-[82vw] snap-start overflow-hidden rounded-2xl border border-[var(--border)] bg-white shadow-sm sm:min-w-[66vw] lg:min-w-[520px]"
-              >
-                <img src={img} alt={`Foto ${index + 1} do ${domo.name}`} className="h-[320px] w-full object-cover md:h-[420px]" />
-                <figcaption className="px-3 py-2 text-xs text-[var(--secondary)]">
-                  {domo.name} • Foto {index + 1}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
+        <DomoGallery images={domo.gallery} domoName={domo.name} />
       </section>
 
       <section className="section-shell py-16">
