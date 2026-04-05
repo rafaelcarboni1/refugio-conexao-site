@@ -135,7 +135,7 @@ export default function PoliticasDeReservaPage() {
 
           <p className="mt-6 text-xs tracking-[0.18em] uppercase text-[#f2c987]">Dúvidas? Fale com nossa central de reservas</p>
           <p className="mt-2 text-sm text-white/90">+55 (48) 99197-1032</p>
-          <p className="text-sm text-white/90">refugioconexao@gmail.com</p>
+          <p className="text-sm text-white/90">conexaorefugio@gmail.com</p>
           <p className="text-sm text-white/90">www.refugioconexao.com</p>
           <p className="mt-3 text-sm text-white/90">
             Estrada Geral, s/nº - Costão Novo - Praia Grande / SC - Brasil CEP: 88990-000
