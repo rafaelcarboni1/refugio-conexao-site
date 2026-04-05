@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { allGalleryImages, domos } from "@/lib/domos";
 import BookingPrecheck from "@/components/booking-precheck";
+import AvailabilityModalTrigger from "@/components/availability-modal-trigger";
 
 const whatsappNumber = "554891971032";
 
@@ -177,12 +178,10 @@ export default function HomePage() {
                 com agilidade no WhatsApp.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a
+                <AvailabilityModalTrigger
+                  label="Ver disponibilidade online"
                   className="primary-btn !bg-[#f2c987] !text-black hover:!bg-[#ffdca8]"
-                  href="#reserva"
-                >
-                  Ver disponibilidade online
-                </a>
+                />
                 <a
                   className="secondary-btn !border-white/75 !text-white hover:!bg-white hover:!text-black"
                   href="#domos"
@@ -276,9 +275,11 @@ export default function HomePage() {
                   >
                     Reservar {domo.name}
                   </a>
-                  <Link href={`/?domo=${domo.slug}#reserva`} className="secondary-btn">
-                    Ver disponibilidade online
-                  </Link>
+                  <AvailabilityModalTrigger
+                    label="Ver disponibilidade online"
+                    className="secondary-btn"
+                    initialDomoSlug={domo.slug}
+                  />
                   <Link href={`/domos/${domo.slug}`} className="secondary-btn">
                     Ver página completa
                   </Link>

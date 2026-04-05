@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { domos } from "@/lib/domos";
 import DomoGallery from "@/components/domo-gallery";
-import BookingPrecheck from "@/components/booking-precheck";
+import AvailabilityModalTrigger from "@/components/availability-modal-trigger";
 
 const whatsappNumber = "554891971032";
 
@@ -115,23 +115,15 @@ export default async function DomoPage({
             >
               Ver disponibilidade no WhatsApp
             </a>
-            <a
-              href="#disponibilidade-online"
-              className="secondary-btn mt-3 !border-white/80 !text-white hover:!bg-white hover:!text-black"
-            >
-              Consultar disponibilidade online
-            </a>
+            <div className="mt-3">
+              <AvailabilityModalTrigger
+                label="Consultar disponibilidade online"
+                initialDomoSlug={domo.slug}
+                className="secondary-btn !border-white/80 !text-white hover:!bg-white hover:!text-black"
+              />
+            </div>
           </div>
         </div>
-      </section>
-
-      <section id="disponibilidade-online" className="section-shell py-12">
-        <BookingPrecheck
-          initialDomoSlug={domo.slug}
-          lockDomo
-          title={`Consultar disponibilidade do ${domo.name}`}
-          subtitle="Veja online as datas livres no calendário principal (Airbnb iCal) e continue no WhatsApp com os dados prontos."
-        />
       </section>
 
       <section className="section-shell py-16">
