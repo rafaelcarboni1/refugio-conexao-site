@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-refugio.jpg",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
         alt: "Refúgio Conexão em Praia Grande-SC",
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     title: "Refúgio Conexão | Domos em Praia Grande-SC",
     description:
       "Hospedagem premium em domos geodésicos na Capital dos Cânions, com reserva direta no WhatsApp.",
-    images: ["/og-refugio.jpg"],
+    images: ["/opengraph-image"],
   },
   icons: {
     icon: [
