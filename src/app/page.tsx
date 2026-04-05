@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { allGalleryImages, domos } from "@/lib/domos";
+import BookingPrecheck from "@/components/booking-precheck";
 
 const whatsappNumber = "554891971032";
 
@@ -44,6 +45,29 @@ const faqs = [
   {
     q: "Posso incluir experiências junto da hospedagem?",
     a: "Sim. Nossa equipe organiza experiências como balão, quadriciclo e roteiros na natureza sob reserva.",
+  },
+  {
+    q: "Qual a política de cancelamento?",
+    a: "As condições variam conforme antecedência e período. Nossa equipe informa com clareza no momento da reserva pelo WhatsApp.",
+  },
+  {
+    q: "Aceita pet e crianças?",
+    a: "Consulte a equipe no WhatsApp para validar regras por domo e perfil da hospedagem, garantindo a melhor experiência para todos.",
+  },
+];
+
+const guestSignals = [
+  {
+    title: "Conforto real",
+    text: "Hóspedes valorizam a qualidade da estrutura e o nível de cuidado em cada detalhe.",
+  },
+  {
+    title: "Silêncio e privacidade",
+    text: "Atmosfera reservada para descansar, desconectar e viver a experiência no próprio ritmo.",
+  },
+  {
+    title: "Atendimento rápido",
+    text: "Suporte direto no WhatsApp, com resposta ágil para datas, dúvidas e experiências.",
   },
 ];
 
@@ -298,6 +322,80 @@ export default function HomePage() {
                 {exp}
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="reserva" className="section-shell py-16">
+        <div className="grid gap-6 md:grid-cols-[1.05fr_0.95fr] md:items-stretch">
+          <BookingPrecheck />
+
+          <div className="rounded-3xl border border-[var(--border)] bg-white p-6 shadow-sm md:p-8">
+            <p className="text-xs tracking-[0.18em] uppercase text-[var(--accent)]">Informações de reserva</p>
+            <h3 className="mt-2 text-4xl">Condições transparentes</h3>
+
+            <div className="mt-5 grid gap-3 text-sm text-[var(--secondary)]">
+              <div className="rounded-xl border border-[var(--border)] bg-[var(--background)] px-4 py-3">
+                • Valores e disponibilidade informados com clareza no atendimento.
+              </div>
+              <div className="rounded-xl border border-[var(--border)] bg-[var(--background)] px-4 py-3">
+                • Parcelamento em até 6x sem juros.
+              </div>
+              <div className="rounded-xl border border-[var(--border)] bg-[var(--background)] px-4 py-3">
+                • 10% de desconto para pagamento à vista (Pix ou dinheiro).
+              </div>
+              <div className="rounded-xl border border-[var(--border)] bg-[var(--background)] px-4 py-3">
+                • Check-in 16h e check-out 13h.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell py-10">
+        <div className="card-glass p-6 md:p-10">
+          <p className="text-xs tracking-[0.18em] uppercase text-[var(--accent)]">Experiência dos hóspedes</p>
+          <h3 className="mt-2 text-5xl">O que mais encanta na estadia</h3>
+
+          <div className="mt-6 grid gap-3 md:grid-cols-3">
+            {guestSignals.map((item) => (
+              <div key={item.title} className="rounded-2xl border border-[var(--border)] bg-white px-4 py-4">
+                <p className="text-base font-semibold">{item.title}</p>
+                <p className="mt-1 text-sm text-[var(--secondary)]">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell py-10">
+        <div className="grid gap-6 md:grid-cols-2">
+          <div className="rounded-3xl border border-[var(--border)] bg-white p-6 shadow-sm md:p-8">
+            <p className="text-xs tracking-[0.18em] uppercase text-[var(--accent)]">Localização</p>
+            <h3 className="mt-2 text-4xl">Como chegar ao Refúgio Conexão</h3>
+            <ul className="mt-5 space-y-2 text-sm text-[var(--secondary)]">
+              <li>• Praia Grande — SC (Capital dos Cânions)</li>
+              <li>• Acesso facilitado para os principais passeios da região</li>
+              <li>• Suporte no WhatsApp para roteiro e orientações de chegada</li>
+            </ul>
+            <a
+              href="https://maps.google.com/?q=Praia+Grande+SC"
+              target="_blank"
+              rel="noreferrer"
+              className="secondary-btn mt-6"
+            >
+              Abrir no mapa
+            </a>
+          </div>
+
+          <div className="rounded-3xl border border-[var(--border)] bg-[#1d1b19] p-6 text-white shadow-sm md:p-8">
+            <p className="text-xs tracking-[0.18em] uppercase text-[#f2c987]">Políticas essenciais</p>
+            <h3 className="mt-2 text-4xl">Antes de reservar</h3>
+            <ul className="mt-5 space-y-2 text-sm text-white/85">
+              <li className="rounded-xl border border-white/15 bg-white/5 px-3 py-2">• Regras de cancelamento informadas no atendimento.</li>
+              <li className="rounded-xl border border-white/15 bg-white/5 px-3 py-2">• Condições de pet/crianças validadas por domo.</li>
+              <li className="rounded-xl border border-white/15 bg-white/5 px-3 py-2">• Experiências extras por agendamento prévio.</li>
+            </ul>
           </div>
         </div>
       </section>
