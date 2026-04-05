@@ -1,64 +1,10 @@
+import Link from "next/link";
+import { allGalleryImages, domos } from "@/lib/domos";
+
 const whatsappNumber = "554891971032";
 
 const wa = (message: string) =>
   `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-const domos = [
-  {
-    name: "Domo One",
-    capacity: "Até 2 pessoas",
-    mood: "Romântico e intimista",
-    image: "/images/domo-one/domo-one-004-0b61e4d483.jpg",
-    imageAlt: "/images/domo-one/domo-one-009-5dc7bec96b.jpg",
-    highlights: [
-      "Hidromassagem privativa",
-      "Cozinha completa equipada",
-      "Ar-condicionado quente/frio",
-      "Vista para os cânions",
-    ],
-    message:
-      "Olá! Vim pelo site e quero disponibilidade para o Domo One na data que desejo.",
-  },
-  {
-    name: "Domo Two",
-    capacity: "Até 2 pessoas",
-    mood: "Premium para casal",
-    image: "/images/domo-two/domo-two-004-8e55cb7ab8.jpg",
-    imageAlt: "/images/domo-two/domo-two-009-3b0d187e4b.jpg",
-    highlights: [
-      "Hidromassagem privativa",
-      "Deck para relaxamento",
-      "Smart TV 4K com Netflix",
-      "Estacionamento privativo",
-    ],
-    message:
-      "Olá! Vim pelo site e quero disponibilidade para o Domo Two na data que desejo.",
-  },
-  {
-    name: "Domo Three",
-    capacity: "Até 4 pessoas",
-    mood: "A experiência mais completa",
-    image: "/images/domo-three/domo-three-006-9908b06de9.jpg",
-    imageAlt: "/images/domo-three/domo-three-011-3d490d4c07.jpg",
-    highlights: [
-      "Piscina aquecida com borda infinita",
-      "Hidromassagem privativa",
-      "Espaço externo com churrasqueira",
-      "Chuveiro duplo",
-    ],
-    message:
-      "Olá! Vim pelo site e quero disponibilidade para o Domo Three na data que desejo.",
-  },
-];
-
-const gallery = [
-  "/images/domo-one/domo-one-012-561c4f51e5.jpg",
-  "/images/domo-two/domo-two-003-cef3015176.jpg",
-  "/images/domo-three/domo-three-012-d205e1cbf3.jpg",
-  "/images/domo-one/domo-one-022-b45ae40804.jpg",
-  "/images/domo-two/domo-two-006-b75e35893e.jpg",
-  "/images/domo-three/domo-three-015-1568f7042b.jpg",
-];
 
 const experiences = [
   "Voo de balão ao amanhecer com vista dos cânions",
@@ -201,11 +147,6 @@ export default function HomePage() {
               <p className="mt-2 text-sm text-white/80">
                 Envie sua data desejada e receba retorno com disponibilidade e condições.
               </p>
-              <ul className="mt-4 space-y-2 text-sm text-white/85">
-                <li>• Resposta direta com equipe local</li>
-                <li>• Suporte para casal, família e roteiro personalizado</li>
-                <li>• Aprovação rápida da reserva</li>
-              </ul>
               <a
                 href={wa("Olá! Quero reservar no Refúgio Conexão. Pode me ajudar com disponibilidade e valores?")}
                 target="_blank"
@@ -242,15 +183,15 @@ export default function HomePage() {
         <div className="space-y-16">
           {domos.map((domo, index) => (
             <article
-              key={domo.name}
+              key={domo.slug}
               className={`grid gap-6 md:grid-cols-2 md:items-center ${
                 index % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
               }`}
             >
               <div className="relative">
-                <img src={domo.image} alt={domo.name} className="h-[420px] w-full rounded-3xl object-cover" />
+                <img src={domo.hero} alt={domo.name} className="h-[420px] w-full rounded-3xl object-cover" />
                 <img
-                  src={domo.imageAlt}
+                  src={domo.cover}
                   alt={`${domo.name} detalhe`}
                   className="absolute -bottom-6 right-5 hidden h-48 w-40 rounded-2xl border-4 border-[var(--background)] object-cover shadow-xl md:block"
                 />
@@ -260,6 +201,7 @@ export default function HomePage() {
                 <p className="text-xs tracking-[0.18em] uppercase text-[var(--accent)]">{domo.mood}</p>
                 <h3 className="mt-2 text-5xl leading-none">{domo.name}</h3>
                 <p className="mt-2 text-sm font-semibold text-[var(--secondary)]">{domo.capacity}</p>
+                <p className="mt-3 text-sm text-[var(--secondary)]">{domo.description}</p>
 
                 <ul className="mt-5 space-y-2 text-sm text-[var(--secondary)]">
                   {domo.highlights.map((h) => (
@@ -267,14 +209,19 @@ export default function HomePage() {
                   ))}
                 </ul>
 
-                <a
-                  href={wa(domo.message)}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="primary-btn mt-6"
-                >
-                  Reservar {domo.name}
-                </a>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  <a
+                    href={wa(domo.message)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="primary-btn"
+                  >
+                    Reservar {domo.name}
+                  </a>
+                  <Link href={`/domos/${domo.slug}`} className="secondary-btn">
+                    Ver página completa
+                  </Link>
+                </div>
               </div>
             </article>
           ))}
@@ -285,26 +232,39 @@ export default function HomePage() {
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
             <p className="text-xs tracking-[0.18em] uppercase text-[var(--accent)]">VISUAL EXPERIENCE</p>
-            <h2 className="mt-2 text-5xl">Galeria curada</h2>
+            <h2 className="mt-2 text-5xl">Galeria por domo</h2>
           </div>
-          <a
-            className="secondary-btn"
-            href={wa("Olá! Quero receber mais fotos e vídeos dos domos.")}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Pedir mais fotos
-          </a>
+        </div>
+
+        <div className="mb-8 grid gap-4 md:grid-cols-3">
+          {domos.map((domo) => (
+            <Link
+              key={domo.slug}
+              href={`/domos/${domo.slug}`}
+              className="group overflow-hidden rounded-3xl border border-[var(--border)] bg-white"
+            >
+              <img
+                src={domo.gallery[0]}
+                alt={domo.name}
+                className="h-56 w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+              />
+              <div className="p-4">
+                <p className="text-xl font-semibold">{domo.name}</p>
+                <p className="text-sm text-[var(--secondary)]">{domo.gallery.length} fotos disponíveis</p>
+                <p className="mt-3 text-xs tracking-[0.15em] uppercase text-[var(--accent)]">Abrir galeria completa</p>
+              </div>
+            </Link>
+          ))}
         </div>
 
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:grid-rows-2">
-          {gallery.map((img, i) => (
+          {allGalleryImages.slice(0, 8).map((img, i) => (
             <img
               key={img}
               src={img}
               alt="Galeria Refúgio Conexão"
               className={`h-44 w-full rounded-2xl object-cover md:h-64 ${
-                i === 0 || i === 5 ? "md:col-span-2" : ""
+                i === 0 || i === 7 ? "md:col-span-2" : ""
               }`}
             />
           ))}
