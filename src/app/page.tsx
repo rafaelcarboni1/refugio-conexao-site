@@ -100,6 +100,9 @@ export default function HomePage() {
             <a href="#experiencias" className="hover:text-white">
               Experiências
             </a>
+            <Link href="/politicas-de-reserva" className="hover:text-white">
+              Políticas
+            </Link>
             <a href="#faq" className="hover:text-white">
               FAQ
             </a>
@@ -417,6 +420,12 @@ export default function HomePage() {
               <p className="mt-3 text-sm leading-relaxed text-[var(--secondary)]">{item.a}</p>
             </details>
           ))}
+        </div>
+
+        <div className="mt-6 text-center">
+          <Link href="/politicas-de-reserva" className="secondary-btn">
+            Ver política completa de reservas
+          </Link>
         </div>
       </section>
 

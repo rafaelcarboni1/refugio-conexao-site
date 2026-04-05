@@ -148,6 +148,13 @@ export default async function DomoPage({
                 </li>
               ))}
             </ul>
+
+            <Link
+              href="/politicas-de-reserva"
+              className="mt-6 inline-flex rounded-full border border-white/35 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-white hover:bg-white hover:text-black"
+            >
+              Ver política completa
+            </Link>
           </div>
         </div>
       </section>
