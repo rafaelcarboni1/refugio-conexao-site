@@ -4,6 +4,9 @@ export type Domo = {
   capacity: string;
   mood: string;
   description: string;
+  fullDescription: string;
+  idealFor: string[];
+  structure: string[];
   hero: string;
   cover: string;
   highlights: string[];
@@ -18,6 +21,18 @@ export const domos: Domo[] = [
     "capacity": "Até 2 pessoas",
     "mood": "Romântico e intimista",
     "description": "Ideal para casais que buscam privacidade, silêncio e conexão com a natureza em um ambiente sofisticado.",
+    "fullDescription": "O Domo One foi pensado para uma experiência romântica de alto padrão, com atmosfera reservada e decoração acolhedora. É a opção ideal para desacelerar, curtir o clima da serra e viver dias de descanso com conforto real.",
+    "idealFor": [
+      "Casais em viagem romântica",
+      "Aniversário de namoro ou casamento",
+      "Fim de semana de descanso"
+    ],
+    "structure": [
+      "Cama de casal confortável",
+      "Banheiro privativo",
+      "Roupas de cama e banho",
+      "Ambiente climatizado"
+    ],
     "hero": "/images/domo-one/domo-one-004-0b61e4d483.jpg",
     "cover": "/images/domo-one/domo-one-009-5dc7bec96b.jpg",
     "highlights": [
@@ -96,6 +111,18 @@ export const domos: Domo[] = [
     "capacity": "Até 2 pessoas",
     "mood": "Premium para casal",
     "description": "Perfeito para uma hospedagem exclusiva, com conforto premium e atmosfera acolhedora para momentos especiais.",
+    "fullDescription": "O Domo Two entrega uma proposta premium para casal, combinando arquitetura marcante, privacidade e acabamentos de alto nível. É ideal para quem quer uma hospedagem diferenciada com sensação de exclusividade em todos os detalhes.",
+    "idealFor": [
+      "Lua de mel",
+      "Escapada romântica",
+      "Datas especiais a dois"
+    ],
+    "structure": [
+      "Cama de casal premium",
+      "Banheiro privativo",
+      "Espaço externo para relaxar",
+      "Ambiente climatizado"
+    ],
     "hero": "/images/domo-two/domo-two-004-8e55cb7ab8.jpg",
     "cover": "/images/domo-two/domo-two-009-3b0d187e4b.jpg",
     "highlights": [
@@ -128,6 +155,18 @@ export const domos: Domo[] = [
     "capacity": "Até 4 pessoas",
     "mood": "A experiência mais completa",
     "description": "Nossa opção mais completa para quem quer espaço, lazer e uma experiência memorável em família ou casal.",
+    "fullDescription": "O Domo Three é a experiência mais completa do Refúgio Conexão, com mais espaço interno, área externa ampla e estrutura de lazer para estadias de casal ou família. Une conforto, privacidade e praticidade para quem quer viver os cânions com máximo aproveitamento.",
+    "idealFor": [
+      "Famílias pequenas",
+      "Casais que querem mais espaço",
+      "Viagens com foco em lazer completo"
+    ],
+    "structure": [
+      "Acomoda até 4 pessoas",
+      "Banheiro amplo com chuveiro duplo",
+      "Área externa com churrasqueira",
+      "Espaço de convivência maior"
+    ],
     "hero": "/images/domo-three/domo-three-006-9908b06de9.jpg",
     "cover": "/images/domo-three/domo-three-011-3d490d4c07.jpg",
     "highlights": [

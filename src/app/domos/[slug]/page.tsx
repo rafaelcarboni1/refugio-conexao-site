@@ -83,8 +83,37 @@ export default async function DomoPage({
 
       <section className="section-shell py-16">
         <div className="card-glass p-6 md:p-10">
-          <p className="text-xs tracking-[0.18em] uppercase text-[var(--accent)]">Diferenciais</p>
-          <h2 className="mt-2 text-5xl">Tudo que você encontra neste domo</h2>
+          <p className="text-xs tracking-[0.18em] uppercase text-[var(--accent)]">Descrição completa</p>
+          <h2 className="mt-2 text-5xl">Conheça melhor o {domo.name}</h2>
+          <p className="mt-4 max-w-4xl text-sm leading-relaxed text-[var(--secondary)] md:text-base">
+            {domo.fullDescription}
+          </p>
+
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            <div>
+              <p className="text-xs tracking-[0.18em] uppercase text-[var(--accent)]">Ideal para</p>
+              <ul className="mt-3 space-y-2 text-sm text-[var(--secondary)]">
+                {domo.idealFor.map((item) => (
+                  <li key={item} className="rounded-xl border border-[var(--border)] bg-white px-3 py-2">
+                    • {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p className="text-xs tracking-[0.18em] uppercase text-[var(--accent)]">Estrutura</p>
+              <ul className="mt-3 space-y-2 text-sm text-[var(--secondary)]">
+                {domo.structure.map((item) => (
+                  <li key={item} className="rounded-xl border border-[var(--border)] bg-white px-3 py-2">
+                    • {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <p className="mt-8 text-xs tracking-[0.18em] uppercase text-[var(--accent)]">Diferenciais</p>
           <ul className="mt-6 grid gap-3 text-sm text-[var(--secondary)] md:grid-cols-2">
             {domo.highlights.map((item) => (
               <li key={item} className="rounded-2xl border border-[var(--border)] bg-white px-4 py-3">
