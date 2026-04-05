@@ -28,9 +28,13 @@ html {
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(180deg, #f8f6f2 0%, #f5f2ed 100%);
   color: var(--foreground);
   font-family: var(--font-body), sans-serif;
+}
+
+::selection {
+  background: rgba(161, 98, 7, 0.18);
 }
 
 h1,
