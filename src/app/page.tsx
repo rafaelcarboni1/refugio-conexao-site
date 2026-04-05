@@ -179,11 +179,9 @@ export default function HomePage() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   className="primary-btn !bg-[#f2c987] !text-black hover:!bg-[#ffdca8]"
-                  href={wa("Olá! Quero disponibilidade para me hospedar no Refúgio Conexão.")}
-                  target="_blank"
-                  rel="noreferrer"
+                  href="#reserva"
                 >
-                  Ver disponibilidade
+                  Ver disponibilidade online
                 </a>
                 <a
                   className="secondary-btn !border-white/75 !text-white hover:!bg-white hover:!text-black"
@@ -278,6 +276,9 @@ export default function HomePage() {
                   >
                     Reservar {domo.name}
                   </a>
+                  <Link href={`/?domo=${domo.slug}#reserva`} className="secondary-btn">
+                    Ver disponibilidade online
+                  </Link>
                   <Link href={`/domos/${domo.slug}`} className="secondary-btn">
                     Ver página completa
                   </Link>

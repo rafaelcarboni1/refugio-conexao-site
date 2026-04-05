@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { domos } from "@/lib/domos";
 
 const whatsappNumber = "554891971032";
@@ -11,8 +11,20 @@ const buildWa = (message: string) =>
 type AvailabilityStatus = "idle" | "loading" | "available" | "unavailable" | "error";
 type DateSuggestion = { checkin: string; checkout: string };
 
-export default function BookingPrecheck() {
-  const [domoSlug, setDomoSlug] = useState(domos[0]?.slug ?? "domo-one");
+type BookingPrecheckProps = {
+  initialDomoSlug?: string;
+  lockDomo?: boolean;
+  title?: string;
+  subtitle?: string;
+};
+
+export default function BookingPrecheck({
+  initialDomoSlug,
+  lockDomo = false,
+  title = "Consulta online em tempo real",
+  subtitle = "Consulta direta no calendário principal do Airbnb (iCal) antes de abrir o WhatsApp.",
+}: BookingPrecheckProps) {
+  const [domoSlug, setDomoSlug] = useState(initialDomoSlug ?? domos[0]?.slug ?? "domo-one");
   const [checkin, setCheckin] = useState("");
   const [checkout, setCheckout] = useState("");
   const [guests, setGuests] = useState("2");
@@ -21,6 +33,18 @@ export default function BookingPrecheck() {
   const [suggestions, setSuggestions] = useState<DateSuggestion[]>([]);
 
   const selectedDomo = domos.find((item) => item.slug === domoSlug) ?? domos[0];
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const domoFromQuery = params.get("domo");
+
+    if (!domoFromQuery || lockDomo) return;
+
+    const exists = domos.some((item) => item.slug === domoFromQuery);
+    if (exists) {
+      setDomoSlug(domoFromQuery);
+    }
+  }, [lockDomo]);
 
   const canCheck = !!checkin && !!checkout;
 
@@ -85,31 +109,38 @@ export default function BookingPrecheck() {
   return (
     <div className="card-glass p-6 md:p-8">
       <p className="text-xs tracking-[0.18em] uppercase text-[var(--accent)]">Pré-check de disponibilidade</p>
-      <h3 className="mt-2 text-4xl">Consulta online em tempo real</h3>
-      <p className="mt-2 text-sm text-[var(--secondary)]">
-        Consulta direta no calendário principal do Airbnb (iCal) antes de abrir o WhatsApp.
-      </p>
+      <h3 className="mt-2 text-4xl">{title}</h3>
+      <p className="mt-2 text-sm text-[var(--secondary)]">{subtitle}</p>
 
       <div className="mt-6 grid gap-3 md:grid-cols-2">
-        <label className="text-sm text-[var(--secondary)]">
-          Domo
-          <select
-            value={domoSlug}
-            onChange={(e) => {
-              setDomoSlug(e.target.value);
-              setStatus("idle");
-              setStatusMessage("");
-              setSuggestions([]);
-            }}
-            className="mt-1 w-full rounded-xl border border-[var(--border)] bg-white px-3 py-2 text-sm text-[var(--foreground)]"
-          >
-            {domos.map((item) => (
-              <option key={item.slug} value={item.slug}>
-                {item.name}
-              </option>
-            ))}
-          </select>
-        </label>
+        {!lockDomo ? (
+          <label className="text-sm text-[var(--secondary)]">
+            Domo
+            <select
+              value={domoSlug}
+              onChange={(e) => {
+                setDomoSlug(e.target.value);
+                setStatus("idle");
+                setStatusMessage("");
+                setSuggestions([]);
+              }}
+              className="mt-1 w-full rounded-xl border border-[var(--border)] bg-white px-3 py-2 text-sm text-[var(--foreground)]"
+            >
+              {domos.map((item) => (
+                <option key={item.slug} value={item.slug}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
+          </label>
+        ) : (
+          <div className="text-sm text-[var(--secondary)]">
+            Domo
+            <div className="mt-1 w-full rounded-xl border border-[var(--border)] bg-white px-3 py-2 text-sm font-semibold text-[var(--foreground)]">
+              {selectedDomo.name}
+            </div>
+          </div>
+        )}
 
         <label className="text-sm text-[var(--secondary)]">
           Hóspedes
