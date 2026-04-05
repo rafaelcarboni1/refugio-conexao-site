@@ -9,6 +9,7 @@ const buildWa = (message: string) =>
   `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
 type AvailabilityStatus = "idle" | "loading" | "available" | "unavailable" | "error";
+type DateSuggestion = { checkin: string; checkout: string };
 
 export default function BookingPrecheck() {
   const [domoSlug, setDomoSlug] = useState(domos[0]?.slug ?? "domo-one");
@@ -17,6 +18,7 @@ export default function BookingPrecheck() {
   const [guests, setGuests] = useState("2");
   const [status, setStatus] = useState<AvailabilityStatus>("idle");
   const [statusMessage, setStatusMessage] = useState("");
+  const [suggestions, setSuggestions] = useState<DateSuggestion[]>([]);
 
   const selectedDomo = domos.find((item) => item.slug === domoSlug) ?? domos[0];
 
@@ -45,6 +47,7 @@ export default function BookingPrecheck() {
 
     setStatus("loading");
     setStatusMessage("Consultando calendário do Airbnb...");
+    setSuggestions([]);
 
     try {
       const response = await fetch(
@@ -62,9 +65,11 @@ export default function BookingPrecheck() {
       if (data.available) {
         setStatus("available");
         setStatusMessage("Disponível nas datas selecionadas ✅");
+        setSuggestions([]);
       } else {
         setStatus("unavailable");
         setStatusMessage("Indisponível nessas datas no calendário atual.");
+        setSuggestions(Array.isArray(data.suggestions) ? data.suggestions : []);
       }
     } catch (error) {
       setStatus("error");
@@ -73,6 +78,7 @@ export default function BookingPrecheck() {
           ? error.message
           : "Não foi possível consultar disponibilidade agora.",
       );
+      setSuggestions([]);
     }
   };
 
@@ -93,6 +99,7 @@ export default function BookingPrecheck() {
               setDomoSlug(e.target.value);
               setStatus("idle");
               setStatusMessage("");
+              setSuggestions([]);
             }}
             className="mt-1 w-full rounded-xl border border-[var(--border)] bg-white px-3 py-2 text-sm text-[var(--foreground)]"
           >
@@ -127,6 +134,7 @@ export default function BookingPrecheck() {
               setCheckin(e.target.value);
               setStatus("idle");
               setStatusMessage("");
+              setSuggestions([]);
             }}
             className="mt-1 w-full rounded-xl border border-[var(--border)] bg-white px-3 py-2 text-sm text-[var(--foreground)]"
           />
@@ -141,6 +149,7 @@ export default function BookingPrecheck() {
               setCheckout(e.target.value);
               setStatus("idle");
               setStatusMessage("");
+              setSuggestions([]);
             }}
             className="mt-1 w-full rounded-xl border border-[var(--border)] bg-white px-3 py-2 text-sm text-[var(--foreground)]"
           />
@@ -170,6 +179,31 @@ export default function BookingPrecheck() {
         >
           {statusMessage}
         </p>
+      )}
+
+      {status === "unavailable" && suggestions.length > 0 && (
+        <div className="mt-3 rounded-xl border border-[var(--border)] bg-white p-3">
+          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--accent)]">
+            Próximas datas sugeridas
+          </p>
+          <div className="mt-2 grid gap-2">
+            {suggestions.map((item) => (
+              <button
+                key={`${item.checkin}-${item.checkout}`}
+                type="button"
+                onClick={() => {
+                  setCheckin(item.checkin);
+                  setCheckout(item.checkout);
+                  setStatus("idle");
+                  setStatusMessage("Datas sugeridas aplicadas. Clique em consultar novamente.");
+                }}
+                className="rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-left text-sm text-[var(--foreground)] hover:border-[var(--accent)]"
+              >
+                {item.checkin} → {item.checkout}
+              </button>
+            ))}
+          </div>
+        </div>
       )}
 
       <a

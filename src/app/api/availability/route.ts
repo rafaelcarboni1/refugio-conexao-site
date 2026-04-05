@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import {
   type DomoSlug,
   isRangeAvailable,
+  suggestNextAvailableRanges,
 } from "@/lib/availability";
 
 const isValidDate = (value: string) => /^\d{4}-\d{2}-\d{2}$/.test(value);
@@ -36,12 +37,16 @@ export async function GET(request: Request) {
     }
 
     const available = await isRangeAvailable(domo, checkin, checkout);
+    const suggestions = available
+      ? []
+      : await suggestNextAvailableRanges(domo, checkin, checkout, 3);
 
     return NextResponse.json({
       domo,
       checkin,
       checkout,
       available,
+      suggestions,
       source: "airbnb-ical",
       checkedAt: new Date().toISOString(),
     });

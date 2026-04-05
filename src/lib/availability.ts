@@ -123,6 +123,26 @@ export const rangesOverlap = (
   return aStart < bEnd && bStart < aEnd;
 };
 
+const addDays = (date: string, days: number) => {
+  const base = toMs(date);
+  return isoDate(new Date(base + days * 24 * 60 * 60 * 1000));
+};
+
+const diffDays = (start: string, end: string) => {
+  const ms = toMs(end) - toMs(start);
+  return Math.max(1, Math.round(ms / (24 * 60 * 60 * 1000)));
+};
+
+const isRangeAvailableWithEvents = (
+  events: ICalEventRange[],
+  checkin: string,
+  checkout: string,
+) => {
+  return !events.some((event) =>
+    rangesOverlap(checkin, checkout, event.startDate, event.endDate),
+  );
+};
+
 export const getDomoBookedEvents = async (slug: DomoSlug): Promise<ICalEventRange[]> => {
   const icalUrl = ICAL_BY_DOMO[slug];
 
@@ -164,7 +184,27 @@ export const isRangeAvailable = async (
 ): Promise<boolean> => {
   const events = await getDomoBookedEvents(slug);
 
-  return !events.some((event) =>
-    rangesOverlap(checkin, checkout, event.startDate, event.endDate),
-  );
+  return isRangeAvailableWithEvents(events, checkin, checkout);
+};
+
+export const suggestNextAvailableRanges = async (
+  slug: DomoSlug,
+  checkin: string,
+  checkout: string,
+  limit = 3,
+): Promise<Array<{ checkin: string; checkout: string }>> => {
+  const events = await getDomoBookedEvents(slug);
+  const nights = diffDays(checkin, checkout);
+  const suggestions: Array<{ checkin: string; checkout: string }> = [];
+
+  for (let offset = 1; offset <= 540 && suggestions.length < limit; offset++) {
+    const start = addDays(checkin, offset);
+    const end = addDays(start, nights);
+
+    if (isRangeAvailableWithEvents(events, start, end)) {
+      suggestions.push({ checkin: start, checkout: end });
+    }
+  }
+
+  return suggestions;
 };
