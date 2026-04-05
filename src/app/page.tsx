@@ -141,7 +141,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="card-glass border-white/20 bg-black/35 p-5 text-white md:p-6">
+            <div className="rounded-2xl border border-white/20 bg-black/60 p-5 text-white shadow-2xl backdrop-blur-xl md:p-6">
               <p className="text-xs tracking-[0.16em] uppercase text-[#f2c987]">Reserva rápida</p>
               <h2 className="mt-2 text-3xl">Atendimento imediato</h2>
               <p className="mt-2 text-sm text-white/80">
@@ -160,7 +160,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-shell -mt-6 pb-6 md:-mt-8">
+      <section className="section-shell py-8 md:py-10">
         <div className="grid gap-3 md:grid-cols-4">
           {differentials.map((item) => (
             <div

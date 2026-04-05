@@ -111,15 +111,25 @@ export default async function DomoPage({
           </a>
         </div>
 
-        <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
-          {domo.gallery.map((img) => (
-            <img
-              key={img}
-              src={img}
-              alt={`Foto do ${domo.name}`}
-              className="mb-4 w-full rounded-2xl border border-[var(--border)] bg-white"
-            />
-          ))}
+        <div className="relative">
+          <div className="mb-3 flex items-center justify-between text-xs uppercase tracking-[0.15em] text-[var(--secondary)]">
+            <span>Deslize para o lado</span>
+            <span>{domo.gallery.length} fotos</span>
+          </div>
+
+          <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [scrollbar-width:thin]">
+            {domo.gallery.map((img, index) => (
+              <figure
+                key={img}
+                className="min-w-[82vw] snap-start overflow-hidden rounded-2xl border border-[var(--border)] bg-white shadow-sm sm:min-w-[66vw] lg:min-w-[520px]"
+              >
+                <img src={img} alt={`Foto ${index + 1} do ${domo.name}`} className="h-[320px] w-full object-cover md:h-[420px]" />
+                <figcaption className="px-3 py-2 text-xs text-[var(--secondary)]">
+                  {domo.name} • Foto {index + 1}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 
