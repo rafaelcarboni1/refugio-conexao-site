@@ -1,305 +1,281 @@
-const WHATSAPP_BASE =
-  "https://wa.me/554891971032?text=Olá!%20Vim%20pelo%20site%20da%20Refúgio%20Conexão%20e%20gostaria%20de%20verificar%20disponibilidade.";
+const whatsappNumber = "554891971032";
+
+const wa = (message: string) =>
+  `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
 const domos = [
   {
-    id: "one",
     name: "Domo One",
     capacity: "Até 2 pessoas",
-    description:
-      "Conforto, sofisticação e conexão com a natureza em uma experiência exclusiva para casal.",
+    mood: "Romântico e intimista",
+    image: "/images/domo-one/domo-one-004-0b61e4d483.jpg",
+    imageAlt: "/images/domo-one/domo-one-009-5dc7bec96b.jpg",
     highlights: [
       "Hidromassagem privativa",
-      "Ar-condicionado quente/frio",
       "Cozinha completa equipada",
-      "Wi-Fi de alta velocidade",
+      "Ar-condicionado quente/frio",
+      "Vista para os cânions",
     ],
-    image: "/images/domo-one/domo-one-001-6e86bfce18.jpg",
+    message:
+      "Olá! Vim pelo site e quero disponibilidade para o Domo One na data que desejo.",
   },
   {
-    id: "two",
     name: "Domo Two",
     capacity: "Até 2 pessoas",
-    description:
-      "Exclusividade e aconchego com estrutura completa, vista para os cânions e ambiente premium.",
+    mood: "Premium para casal",
+    image: "/images/domo-two/domo-two-004-8e55cb7ab8.jpg",
+    imageAlt: "/images/domo-two/domo-two-009-3b0d187e4b.jpg",
     highlights: [
       "Hidromassagem privativa",
-      "Smart TV 4K com Netflix",
       "Deck para relaxamento",
+      "Smart TV 4K com Netflix",
       "Estacionamento privativo",
     ],
-    image: "/images/domo-two/domo-two-001-cf6a1ba3ca.jpg",
+    message:
+      "Olá! Vim pelo site e quero disponibilidade para o Domo Two na data que desejo.",
   },
   {
-    id: "three",
     name: "Domo Three",
     capacity: "Até 4 pessoas",
-    description:
-      "A versão mais completa do Refúgio, com piscina privativa aquecida e espaço externo de lazer.",
+    mood: "A experiência mais completa",
+    image: "/images/domo-three/domo-three-006-9908b06de9.jpg",
+    imageAlt: "/images/domo-three/domo-three-011-3d490d4c07.jpg",
     highlights: [
       "Piscina aquecida com borda infinita",
-      "Chuveiro duplo",
-      "Espaço de lazer com churrasqueira",
       "Hidromassagem privativa",
+      "Espaço externo com churrasqueira",
+      "Chuveiro duplo",
     ],
-    image: "/images/domo-three/domo-three-001-bda8973b5f.jpg",
+    message:
+      "Olá! Vim pelo site e quero disponibilidade para o Domo Three na data que desejo.",
   },
+];
+
+const gallery = [
+  "/images/domo-one/domo-one-012-561c4f51e5.jpg",
+  "/images/domo-two/domo-two-003-cef3015176.jpg",
+  "/images/domo-three/domo-three-012-d205e1cbf3.jpg",
+  "/images/domo-one/domo-one-022-b45ae40804.jpg",
+  "/images/domo-two/domo-two-006-b75e35893e.jpg",
+  "/images/domo-three/domo-three-015-1568f7042b.jpg",
 ];
 
 const experiences = [
-  "Voo de balão com vista panorâmica dos cânions",
-  "Cavalgadas turísticas em meio à natureza",
-  "Passeios de quadriciclo",
-  "Trilhas e cachoeiras da região",
+  "Voo de balão ao amanhecer com vista dos cânions",
+  "Passeio de quadriciclo por trilhas panorâmicas",
+  "Cavalgada turística com roteiro de natureza",
+  "Roteiro de cachoeiras e mirantes da região",
 ];
 
-const faqs = [
-  {
-    q: "Quantas pessoas cada domo acomoda?",
-    a: "Domo One e Domo Two acomodam até 2 pessoas. Domo Three acomoda até 4 pessoas.",
-  },
-  {
-    q: "Qual o horário de check-in e check-out?",
-    a: "Check-in a partir das 16h e check-out até 13h.",
-  },
-  {
-    q: "Quais formas de pagamento são aceitas?",
-    a: "Parcelamento em até 6x sem juros e 10% de desconto para pagamento à vista no dinheiro ou Pix.",
-  },
-  {
-    q: "As experiências estão inclusas na diária?",
-    a: "As experiências são opcionais e realizadas sob reserva, conforme disponibilidade.",
-  },
-];
-
-export default function Home() {
+export default function HomePage() {
   return (
-    <>
-      <header className="sticky top-0 z-40 border-b border-[var(--border)] bg-[var(--background)]/95 backdrop-blur">
-        <div className="section-shell flex items-center justify-between py-3">
-          <a href="#home" className="flex items-center gap-3">
+    <div className="bg-[var(--background)] text-[var(--foreground)]">
+      <header className="fixed inset-x-0 top-0 z-50">
+        <div className="mx-auto mt-4 flex w-[min(1200px,94%)] items-center justify-between rounded-full border border-white/25 bg-black/35 px-4 py-2 backdrop-blur-xl">
+          <a href="#top" className="flex items-center gap-3">
             <img
               src="/logo-refugio.jpg"
-              alt="Logo Refúgio Conexão"
-              className="h-11 w-11 rounded-full object-cover"
+              alt="Refúgio Conexão"
+              className="h-10 w-10 rounded-full border border-white/35 object-cover"
             />
-            <div className="leading-tight">
+            <div className="leading-tight text-white">
               <p className="text-sm font-semibold tracking-wide">Refúgio Conexão</p>
-              <p className="text-xs text-[var(--muted)]">Praia Grande - SC</p>
+              <p className="text-[11px] text-white/80">Praia Grande • SC</p>
             </div>
           </a>
 
-          <nav className="hidden items-center gap-5 text-sm font-medium text-[var(--secondary)] md:flex">
-            <a href="#domos" className="hover:text-[var(--accent)]">
-              Domos
-            </a>
-            <a href="#experiencias" className="hover:text-[var(--accent)]">
-              Experiências
-            </a>
-            <a href="#localizacao" className="hover:text-[var(--accent)]">
-              Localização
-            </a>
-            <a href="#faq" className="hover:text-[var(--accent)]">
-              FAQ
-            </a>
+          <nav className="hidden items-center gap-6 text-sm text-white/90 md:flex">
+            <a href="#domos" className="hover:text-white">Domos</a>
+            <a href="#galeria" className="hover:text-white">Galeria</a>
+            <a href="#experiencias" className="hover:text-white">Experiências</a>
+            <a href="#contato" className="hover:text-white">Contato</a>
           </nav>
 
-          <a className="primary-btn" href={WHATSAPP_BASE} target="_blank" rel="noreferrer">
-            Reservar no WhatsApp
+          <a className="primary-btn !bg-white !text-black hover:!bg-[#f8d69f]" href={wa("Olá! Vim pelo site e quero verificar disponibilidade.")} target="_blank" rel="noreferrer">
+            Reservar
           </a>
         </div>
       </header>
 
-      <main id="home" className="pb-28 md:pb-16">
-        <section className="section-shell pt-8 md:pt-14">
-          <div className="grid gap-8 overflow-hidden rounded-3xl bg-[var(--primary)] p-5 text-white md:grid-cols-[1.1fr_0.9fr] md:p-10">
-            <div className="flex flex-col justify-center gap-6">
-              <p className="w-fit rounded-full border border-white/30 px-3 py-1 text-xs tracking-[0.2em] uppercase text-white/90">
-                Domos exclusivos em Praia Grande-SC
+      <section id="top" className="relative min-h-[95vh] overflow-hidden">
+        <img
+          src="/images/domo-three/domo-three-001-bda8973b5f.jpg"
+          alt="Refúgio Conexão"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/45 to-black/75" />
+
+        <div className="section-shell relative flex min-h-[95vh] items-end pb-14 pt-32">
+          <div className="grid w-full gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-end">
+            <div>
+              <p className="mb-4 inline-flex rounded-full border border-white/30 px-3 py-1 text-xs tracking-[0.18em] text-white/90 uppercase">
+                Hospedagem de alto padrão em domos
               </p>
-              <h1 className="text-4xl leading-tight md:text-6xl">
-                Viva a conexão entre conforto premium e natureza dos cânions.
+              <h1 className="max-w-3xl text-5xl leading-[0.95] text-white md:text-7xl">
+                O refúgio mais exclusivo de Praia Grande.
               </h1>
-              <p className="max-w-xl text-base text-stone-100 md:text-lg">
-                3 domos privativos com estrutura completa para uma estadia inesquecível na
-                Capital dos Canyons. Reserva rápida e atendimento direto pelo WhatsApp.
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-white/85 md:text-lg">
+                Design, natureza e privacidade em uma experiência premium com 3 domos
+                únicos e reserva direta pelo WhatsApp.
               </p>
-              <div className="flex flex-wrap gap-3">
-                <a className="secondary-btn !border-white !text-white hover:!bg-white hover:!text-[var(--primary)]" href={WHATSAPP_BASE} target="_blank" rel="noreferrer">
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a className="primary-btn !bg-[#f2c987] !text-black hover:!bg-[#ffdca8]" href={wa("Olá! Quero disponibilidade para me hospedar no Refúgio Conexão.")} target="_blank" rel="noreferrer">
                   Ver disponibilidade
                 </a>
-                <a className="secondary-btn !border-white/60 !text-white hover:!bg-white hover:!text-[var(--primary)]" href="#domos">
-                  Conhecer os domos
+                <a className="secondary-btn !border-white/70 !text-white hover:!bg-white hover:!text-black" href="#domos">
+                  Explorar domos
                 </a>
               </div>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
-              <img
-                src="/images/domo-one/domo-one-002-4390d682f6.jpg"
-                alt="Domo One"
-                className="h-44 w-full rounded-2xl object-cover sm:h-full"
-              />
-              <img
-                src="/images/domo-two/domo-two-002-b15c1373e9.jpg"
-                alt="Domo Two"
-                className="h-44 w-full rounded-2xl object-cover sm:h-full"
-              />
-              <img
-                src="/images/domo-three/domo-three-002-c3d5967e6f.jpg"
-                alt="Domo Three"
-                className="h-44 w-full rounded-2xl object-cover sm:col-span-2"
-              />
+            <div className="card-glass border-white/20 bg-black/35 p-5 text-white md:p-6">
+              <p className="text-xs tracking-[0.16em] uppercase text-[#f2c987]">Reserva rápida</p>
+              <h2 className="mt-2 text-3xl">Atendimento imediato</h2>
+              <ul className="mt-4 space-y-2 text-sm text-white/85">
+                <li>• Check-in a partir das 16h</li>
+                <li>• Check-out até 13h</li>
+                <li>• Parcelamento em até 6x sem juros</li>
+                <li>• 10% de desconto à vista (Pix ou dinheiro)</li>
+              </ul>
+              <a
+                href={wa("Olá! Quero reservar no Refúgio Conexão. Pode me ajudar com disponibilidade e valores?")}
+                target="_blank"
+                rel="noreferrer"
+                className="primary-btn mt-5 w-full !bg-[#25D366] hover:!bg-[#20bb58]"
+              >
+                Falar no WhatsApp
+              </a>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="section-shell mt-8 grid gap-4 md:grid-cols-5">
-          {[
-            "Praia Grande-SC • Capital dos Canyons",
-            "Check-in 16h",
-            "Check-out 13h",
-            "6x sem juros",
-            "10% off à vista",
-          ].map((item) => (
-            <div key={item} className="card-glass px-4 py-3 text-center text-sm text-[var(--secondary)]">
-              {item}
-            </div>
-          ))}
-        </section>
+      <section id="domos" className="section-shell py-20">
+        <div className="mb-10 text-center">
+          <p className="text-xs tracking-[0.18em] uppercase text-[var(--accent)]">Signature Collection</p>
+          <h2 className="mt-2 text-5xl">Escolha o seu domo</h2>
+        </div>
 
-        <section id="domos" className="section-shell mt-20">
-          <div className="mb-8 text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
-              Escolha seu domo
-            </p>
-            <h2 className="mt-2 text-4xl md:text-5xl">3 experiências exclusivas</h2>
-          </div>
+        <div className="space-y-16">
+          {domos.map((domo, index) => (
+            <article
+              key={domo.name}
+              className={`grid gap-6 md:grid-cols-2 md:items-center ${index % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""}`}
+            >
+              <div className="relative">
+                <img src={domo.image} alt={domo.name} className="h-[420px] w-full rounded-3xl object-cover" />
+                <img
+                  src={domo.imageAlt}
+                  alt={`${domo.name} detalhe`}
+                  className="absolute -bottom-6 right-5 hidden h-48 w-40 rounded-2xl border-4 border-[var(--background)] object-cover shadow-xl md:block"
+                />
+              </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {domos.map((domo) => (
-              <article id={domo.id} key={domo.id} className="card-glass overflow-hidden">
-                <img src={domo.image} alt={domo.name} className="h-52 w-full object-cover" />
-                <div className="space-y-4 p-5">
-                  <div>
-                    <h3 className="text-3xl">{domo.name}</h3>
-                    <p className="text-sm font-semibold text-[var(--accent)]">{domo.capacity}</p>
-                  </div>
-                  <p className="text-sm leading-relaxed text-[var(--secondary)]">{domo.description}</p>
-                  <ul className="space-y-1 text-sm text-[var(--secondary)]">
-                    {domo.highlights.map((item) => (
-                      <li key={item}>• {item}</li>
-                    ))}
-                  </ul>
-                  <a className="primary-btn w-full" href={WHATSAPP_BASE} target="_blank" rel="noreferrer">
-                    Reservar {domo.name}
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
+              <div className="card-glass p-6 md:p-8">
+                <p className="text-xs tracking-[0.18em] uppercase text-[var(--accent)]">{domo.mood}</p>
+                <h3 className="mt-2 text-5xl leading-none">{domo.name}</h3>
+                <p className="mt-2 text-sm font-semibold text-[var(--secondary)]">{domo.capacity}</p>
 
-        <section id="experiencias" className="section-shell mt-20 grid gap-8 md:grid-cols-[0.95fr_1.05fr]">
-          <div className="card-glass p-6 md:p-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
-              Experiências
-            </p>
-            <h2 className="mt-2 text-4xl">Muito além da hospedagem</h2>
-            <p className="mt-4 text-sm leading-relaxed text-[var(--secondary)]">
-              Viva Praia Grande-SC com experiências que ampliam a conexão com a natureza.
-              Todas podem ser organizadas sob reserva, conforme disponibilidade.
-            </p>
-            <ul className="mt-6 space-y-3 text-sm text-[var(--secondary)]">
-              {experiences.map((item) => (
-                <li key={item}>• {item}</li>
-              ))}
-            </ul>
-            <a className="primary-btn mt-7" href={WHATSAPP_BASE} target="_blank" rel="noreferrer">
-              Quero planejar minha experiência
-            </a>
-          </div>
+                <ul className="mt-5 space-y-2 text-sm text-[var(--secondary)]">
+                  {domo.highlights.map((h) => (
+                    <li key={h}>• {h}</li>
+                  ))}
+                </ul>
 
-          <img
-            src="/images/domo-three/domo-three-003-6e380f5b1f.jpg"
-            alt="Paisagem do Refúgio Conexão"
-            className="h-full min-h-[320px] w-full rounded-3xl object-cover"
-          />
-        </section>
-
-        <section id="localizacao" className="section-shell mt-20">
-          <div className="card-glass grid gap-6 p-6 md:grid-cols-2 md:p-8">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
-                Localização
-              </p>
-              <h2 className="mt-2 text-4xl">Praia Grande, Santa Catarina</h2>
-              <p className="mt-4 text-sm leading-relaxed text-[var(--secondary)]">
-                Estrada Geral Costão Novo - Cachoeira de Fátima, Praia Grande-SC. Um refúgio
-                rodeado de natureza e com acesso aos principais atrativos da região dos cânions.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
                 <a
-                  className="primary-btn"
-                  href="https://maps.google.com/?q=Refúgio+Conexão+Praia+Grande+SC"
+                  href={wa(domo.message)}
                   target="_blank"
                   rel="noreferrer"
+                  className="primary-btn mt-6"
                 >
-                  Ver no mapa
-                </a>
-                <a className="secondary-btn" href={WHATSAPP_BASE} target="_blank" rel="noreferrer">
-                  Como chegar
+                  Reservar {domo.name}
                 </a>
               </div>
-            </div>
+            </article>
+          ))}
+        </div>
+      </section>
 
-            <iframe
-              title="Mapa Refúgio Conexão"
-              src="https://maps.google.com/maps?q=Ref%C3%BAgio%20Conex%C3%A3o%20Praia%20Grande%20SC&t=&z=13&ie=UTF8&iwloc=&output=embed"
-              className="h-72 w-full rounded-2xl border border-[var(--border)]"
-              loading="lazy"
+      <section id="galeria" className="section-shell py-20">
+        <div className="mb-8 flex items-end justify-between gap-4">
+          <div>
+            <p className="text-xs tracking-[0.18em] uppercase text-[var(--accent)]">Visual Experience</p>
+            <h2 className="mt-2 text-5xl">Galeria curada</h2>
+          </div>
+          <a className="secondary-btn" href={wa("Olá! Quero receber mais fotos e vídeos dos domos.")} target="_blank" rel="noreferrer">
+            Pedir mais fotos
+          </a>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:grid-rows-2">
+          {gallery.map((img, i) => (
+            <img
+              key={img}
+              src={img}
+              alt="Galeria Refúgio Conexão"
+              className={`h-44 w-full rounded-2xl object-cover md:h-64 ${
+                i === 0 || i === 5 ? "md:col-span-2" : ""
+              }`}
             />
-          </div>
-        </section>
+          ))}
+        </div>
+      </section>
 
-        <section id="faq" className="section-shell mt-20">
-          <div className="mb-8 text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">FAQ</p>
-            <h2 className="mt-2 text-4xl md:text-5xl">Perguntas frequentes</h2>
-          </div>
-          <div className="space-y-4">
-            {faqs.map((faq) => (
-              <details key={faq.q} className="card-glass group p-5">
-                <summary className="cursor-pointer list-none text-lg font-semibold text-[var(--primary)]">
-                  {faq.q}
-                </summary>
-                <p className="mt-3 text-sm leading-relaxed text-[var(--secondary)]">{faq.a}</p>
-              </details>
-            ))}
-          </div>
-        </section>
-
-        <section className="section-shell mt-20">
-          <div className="rounded-3xl bg-[var(--primary)] p-8 text-center text-white md:p-12">
-            <h2 className="text-4xl md:text-5xl">Pronto para viver essa experiência?</h2>
-            <p className="mx-auto mt-4 max-w-2xl text-sm text-stone-200 md:text-base">
-              Fale com a equipe da Refúgio Conexão no WhatsApp e veja disponibilidade para sua data.
+      <section id="experiencias" className="section-shell py-20">
+        <div className="card-glass grid gap-8 p-6 md:grid-cols-[0.95fr_1.05fr] md:p-10">
+          <div>
+            <p className="text-xs tracking-[0.18em] uppercase text-[var(--accent)]">Experiências</p>
+            <h2 className="mt-2 text-5xl">Natureza com roteiro premium</h2>
+            <p className="mt-4 text-sm leading-relaxed text-[var(--secondary)]">
+              Transforme a hospedagem em uma jornada completa. A equipe organiza experiências
+              sob reserva para você viver o melhor da região dos cânions.
             </p>
-            <a className="secondary-btn mt-7 !border-white !text-white hover:!bg-white hover:!text-[var(--primary)]" href={WHATSAPP_BASE} target="_blank" rel="noreferrer">
-              Reservar agora
+            <a className="primary-btn mt-6" href={wa("Olá! Quero incluir experiências na minha hospedagem.")} target="_blank" rel="noreferrer">
+              Montar meu roteiro
             </a>
           </div>
-        </section>
-      </main>
+          <div className="space-y-3">
+            {experiences.map((exp) => (
+              <div key={exp} className="rounded-2xl border border-[var(--border)] bg-white px-4 py-4 text-sm text-[var(--secondary)]">
+                {exp}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contato" className="relative mt-8 overflow-hidden bg-[var(--primary)] py-20 text-white">
+        <img
+          src="/images/domo-three/domo-three-020-82e57a2a2b.jpg"
+          alt="Refúgio Conexão noite"
+          className="absolute inset-0 h-full w-full object-cover opacity-30"
+        />
+        <div className="section-shell relative text-center">
+          <p className="text-xs tracking-[0.18em] uppercase text-[#f2c987]">Reserva direta</p>
+          <h2 className="mt-2 text-5xl md:text-6xl">Vamos fechar sua data?</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-sm text-white/85 md:text-base">
+            Atendimento rápido no WhatsApp para disponibilidade, valores e dúvidas. Sem
+            formulário demorado.
+          </p>
+          <a
+            href={wa("Olá! Quero fechar minha hospedagem no Refúgio Conexão. Pode me passar disponibilidade e valor?")}
+            target="_blank"
+            rel="noreferrer"
+            className="primary-btn mt-8 !bg-[#25D366] text-white hover:!bg-[#20bb58]"
+          >
+            Falar no WhatsApp agora
+          </a>
+        </div>
+      </section>
 
       <a
-        href={WHATSAPP_BASE}
+        href={wa("Olá! Vim pelo site e quero reservar no Refúgio Conexão.")}
         target="_blank"
         rel="noreferrer"
-        className="fixed right-4 bottom-4 z-50 rounded-full bg-[#25D366] px-5 py-3 text-sm font-bold text-white shadow-xl md:hidden"
+        className="fixed right-4 bottom-4 z-50 rounded-full bg-[#25D366] px-5 py-3 text-sm font-bold text-white shadow-2xl md:hidden"
       >
-        Reservar no WhatsApp
+        WhatsApp
       </a>
-    </>
+    </div>
   );
 }
