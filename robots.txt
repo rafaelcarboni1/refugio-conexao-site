@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://refugio-conexao-site.vercel.app
+Sitemap: https://refugio-conexao-site.vercel.app/sitemap.xml
