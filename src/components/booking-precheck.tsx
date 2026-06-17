@@ -8,6 +8,8 @@ const whatsappNumber = "554891971032";
 const buildWa = (message: string) =>
   `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
+const isStaticFallback = process.env.NEXT_PUBLIC_STATIC_FALLBACK === "1";
+
 type AvailabilityStatus = "idle" | "loading" | "available" | "unavailable" | "error";
 type DateSuggestion = { checkin: string; checkout: string };
 
@@ -68,6 +70,13 @@ export default function BookingPrecheck({
 
   const checkAvailability = async () => {
     if (!canCheck) return;
+
+    if (isStaticFallback) {
+      setStatus("error");
+      setStatusMessage("Consulta automática temporariamente indisponível. Continue pelo WhatsApp para confirmar as datas.");
+      setSuggestions([]);
+      return;
+    }
 
     setStatus("loading");
     setStatusMessage("Consultando calendário do Airbnb...");

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:github-pages": "NEXT_PUBLIC_STATIC_FALLBACK=1 npm run build && node scripts/build-github-pages.mjs",
     "start": "next start",
     "lint": "eslint"
   },
